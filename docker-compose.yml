@@ -1,0 +1,21 @@
+version: '3.2'
+services:
+  cold:
+    image: ortussolutions/commandbox
+    container_name: cf2021_commandbox
+    build: 
+      dockerfile: ./build/Dockerfile
+    environment:
+      - APP_DIR=/www/gvsu
+      - PORT=8080
+      - BOX_SERVER_APP_CFENGINE=adobe@2021.0.6+330132
+      - BOX_SERVER_PROFILE=development
+      - CFCONFIG_ADMINPASSWORD=password
+      - CFPM_INSTALL=caching,chart,document,ftp,image,mail,oracle,pdf,saml,spreadsheet,zip
+    ports:
+      - '80:80'
+    volumes:
+      - ./wwwroot:/www/gvsu
+      - cf2021_volume:/usr/local/lib/serverHome/WEB-INF
+volumes:
+  cf2021_volume: {external: true}
