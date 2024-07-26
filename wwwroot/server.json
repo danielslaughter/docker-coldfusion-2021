@@ -1,0 +1,5 @@
+{
+    "jvm":{
+        "args":"-Dcoldfusion.datemask.useDasdayofmonth=true"
+    }
+}
